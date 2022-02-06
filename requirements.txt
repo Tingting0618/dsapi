@@ -1,0 +1,9 @@
+Django==4.0.2
+djangorestframework==3.13.1
+autopep8==1.6.0
+pylint==2.12.2 
+# django-cors-headers==3.11.0 
+pylint-django==2.5.0
+numpy==1.22.2
+scikit-learn==0.24.2
+joblib==0.16.0
