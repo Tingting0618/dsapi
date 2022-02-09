@@ -2,6 +2,7 @@ import os
 import joblib
 from django.apps import AppConfig
 from django.conf import settings
+import pandas as pd
 
 
 class ApiConfig(AppConfig):
