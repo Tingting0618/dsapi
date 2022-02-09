@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import WeightPrediction
+from api.views import WeightPrediction,ProdRec
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('weight/', WeightPrediction.as_view(), name = 'weight_prediction')
+    path('weight/', WeightPrediction.as_view(), name = 'weight_prediction'),
+    path('prod/',ProdRec.as_view(), name = 'pdp_prediction')
 ]

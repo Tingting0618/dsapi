@@ -1,7 +1,10 @@
 import numpy as np
+import pandas as pd
 from .apps import ApiConfig
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.conf import settings
+import os
 
 
 class WeightPrediction(APIView):
@@ -20,3 +23,15 @@ class WeightPrediction(APIView):
         weight_predicted = np.round(weight_predicted, 1)
         response_dict = {"Predicted Weight (kg)": weight_predicted}
         return Response(response_dict, status=200)
+    
+
+class ProdRec(APIView):
+    def post(self, request):
+        df =pd.read_csv(os.path.join(settings.DATA, "data.csv"))
+        data = request.data
+        inputlat = data['Lat']
+        df['dist'] = df['lat'] - inputlat
+        results_df = df[df['dist']<=1]
+        j = results_df.to_json(orient='records')
+        return Response(j, status=200)
+
